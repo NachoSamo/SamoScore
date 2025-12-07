@@ -79,5 +79,5 @@ Sigue estos pasos para levantar la aplicación en tu entorno local:
 *   `components/`: Componentes reutilizables de la UI.
 *   `services/`: Lógica de conexión con las APIs (TheSportsDB y Supabase).
 *   `hooks/`: Custom hooks para manejo de lógica.
-*   `features/`: Posiblemente módulos específicos de funcionalidad.
+*   `features/`: Módulos específicos de funcionalidad.
 *   `assets/`: Imágenes, fuentes y recursos estáticos.
