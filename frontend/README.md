@@ -1,50 +1,83 @@
-# Welcome to your Expo app 👋
+# SamoScore
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+## 📱 Descripción del Proyecto
 
-## Get started
+**SamoScore** es una aplicación móvil moderna diseñada para los amantes del deporte. Permite a los usuarios seguir resultados de partidos en tiempo real, consultar tablas de posiciones, ver detalles de ligas y gestionar sus equipos favoritos.
 
-1. Install dependencies
+El proyecto está construido utilizando **React Native** con **Expo**, garantizando una experiencia fluida tanto en dispositivos iOS como Android (y compatible con Web).
 
-   ```bash
-   npm install
-   ```
+## 🛠 Tecnologías y Herramientas
 
-2. Start the app
+Este proyecto utiliza un stack tecnológico robusto y actualizado:
 
-   ```bash
-   npx expo start
-   ```
+### Core & Framework
+*   **[React Native](https://reactnative.dev/):** Framework principal para desarrollo móvil.
+*   **[Expo](https://expo.dev/):** Plataforma y conjunto de herramientas para React Native (SDK 54).
+*   **[TypeScript](https://www.typescriptlang.org/):** Lenguaje principal para asegurar tipado estático y código robusto.
 
-In the output, you'll find options to open the app in a
+### Navegación & UI
+*   **[Expo Router](https://docs.expo.dev/router/introduction/):** Solución de enrutamiento basada en archivos (similar a Next.js).
+*   **Expo Vector Icons & Expo Symbols:** Para la iconografía de la aplicación.
+*   **React Native Reanimated:** Para animaciones fluidas y de alto rendimiento.
+*   **React Native Gesture Handler:** Para interacciones táctiles avanzadas.
 
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
+### Backend & Servicios
+*   **[Supabase](https://supabase.com/):** Backend-as-a-Service utilizado para:
+    *   Autenticación de usuarios.
+    *   Base de datos (PostgreSQL) para guardar favoritos y preferencias de usuario.
 
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
+## 🌐 APIs Consumidas
 
-## Get a fresh project
+La aplicación integra servicios externos para obtener la data deportiva:
 
-When you're ready, run:
+### 1. TheSportsDB API
+Fuente principal de datos deportivos. Se utiliza para consultar:
+*   📅 **Eventos/Partidos:** Resultados en vivo y fixtures por fecha (`fetchEventsByDate`).
+*   🏆 **Tablas de Posiciones:** Rankings actuales de las ligas (`fetchLeagueTable`).
+*   ⚽ **Detalles de Ligas:** Información sobre competiciones (`fetchLeagueDetails`, `fetchAllLeagues`).
 
-```bash
-npm run reset-project
-```
+### 2. Supabase API
+Se utiliza para la persistencia de datos del usuario, permitiendo funcionalidades como:
+*   Inigiar sesión y registrarse.
+*   Guardar y sincronizar equipos o ligas favoritas entre dispositivos (`supabaseFavoritesService`, `supabaseUserService`).
 
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
+## 🚀 Cómo ejecutar el proyecto
 
-## Learn more
+Sigue estos pasos para levantar la aplicación en tu entorno local:
 
-To learn more about developing your project with Expo, look at the following resources:
+1.  **Clonar el repositorio y acceder a la carpeta del frontend:**
+    ```bash
+    cd SamoScore/frontend
+    ```
 
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
+2.  **Instalar dependencias:**
+    ```bash
+    npm install
+    # o
+    yarn install
+    ```
 
-## Join the community
+3.  **Configurar Variables de Entorno:**
+    Asegúrate de tener un archivo `.env` en la raíz de `frontend` con las siguientes claves (basado en los servicios utilizados):
+    ```env
+    EXPO_PUBLIC_THESPORTSDB_API_KEY=tu_api_key
+    EXPO_PUBLIC_SUPABASE_URL=tu_supabase_url
+    EXPO_PUBLIC_SUPABASE_ANON_KEY=tu_supabase_key
+    ```
 
-Join our community of developers creating universal apps.
+4.  **Iniciar la aplicación:**
+    ```bash
+    npx expo start
+    ```
+    *   Presiona `a` para abrir en Android Emulator.
+    *   Presiona `i` para abrir en iOS Simulator.
+    *   Presiona `w` para abrir en Web.
 
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+## 📱 Estructura del Proyecto
+
+*   `app/`: Pantallas y configuración de rutas (Expo Router).
+*   `components/`: Componentes reutilizables de la UI.
+*   `services/`: Lógica de conexión con las APIs (TheSportsDB y Supabase).
+*   `hooks/`: Custom hooks para manejo de lógica.
+*   `features/`: Posiblemente módulos específicos de funcionalidad.
+*   `assets/`: Imágenes, fuentes y recursos estáticos.
