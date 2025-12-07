@@ -10,6 +10,7 @@ type ThemedButtonProps = {
     loading?: boolean;
     style?: ViewStyle;
     textStyle?: TextStyle;
+    iconColor?: string;
 };
 
 export function ThemedButton({
@@ -20,6 +21,7 @@ export function ThemedButton({
     loading = false,
     style,
     textStyle,
+    iconColor,
 }: ThemedButtonProps) {
     const colorScheme = useColorScheme();
     const theme = colorScheme ?? 'light';
@@ -66,7 +68,7 @@ export function ThemedButton({
                         <Ionicons
                             name={iconName}
                             size={20}
-                            color={variant === 'primary' ? '#fff' : Colors[theme].text}
+                            color={iconColor || (variant === 'primary' ? '#fff' : Colors[theme].text)}
                             style={{ marginRight: 8 }}
                         />
                     )}
